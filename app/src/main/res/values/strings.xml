@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Test Application</string>
+    <string name="name_text">Название:</string>
+    <string name="owner_login_text">Владелец:</string>
+    <string name="description_text">Описание:</string>
+    <string name="language_text">Язык:</string>
+    <string name="instructions">Поиск начинается после паузы ввода в 1 секунду при длине запроса более 2-х символов</string>
+</resources>
