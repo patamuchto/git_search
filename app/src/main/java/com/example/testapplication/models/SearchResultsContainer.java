@@ -10,12 +10,12 @@ import java.util.List;
 
 public class SearchResultsContainer {
     @SerializedName("total_count")
-    private long totalCount;
+    protected long totalCount;
 
     @SerializedName("incomplete_results")
-    private boolean incomplete;
+    protected boolean incomplete;
 
-    private List<RepoInfo> items;
+    protected List<RepoInfo> items;
 
     public long getTotalCount() {
         return totalCount;
