@@ -26,17 +26,20 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ListItemViewHolder
     private static final int LAZY_LOADING_OFFSET = 10;
 
     private boolean progressShown = false;
+    private boolean hasMore = false;
     private List<RepoInfo> dataSet;
     private LazyLoadingListener listener;
     private Handler handler;
 
-    public void setData(List<RepoInfo> dataSet){
+    public void setData(List<RepoInfo> dataSet, boolean hasMore){
+        this.hasMore = hasMore;
         this.dataSet = dataSet;
         notifyDataSetChanged();
         Log.e(TAG, "Setting data");
     }
 
-    public void addPage(List<RepoInfo> dataSet){
+    public void addPage(List<RepoInfo> dataSet, boolean hasMore){
+        this.hasMore = hasMore;
         int oldSize = this.dataSet.size();
         this.dataSet.addAll(dataSet);
         notifyItemRangeInserted(oldSize-1,dataSet.size());
@@ -87,7 +90,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ListItemViewHolder
             ((ListItem)holder.itemView).setData(dataSet.get(position));
         }
 
-        if (!progressShown&&listener!=null&&getItemCount()-position<LAZY_LOADING_OFFSET){
+        if (hasMore&&!progressShown&&listener!=null&&getItemCount()-position<LAZY_LOADING_OFFSET){
             handler.post(loadMoreNotifyRunnable);
         }
 

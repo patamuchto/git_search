@@ -92,12 +92,12 @@ public class MainActivity extends AppCompatActivity implements IMainView, RVAdap
 
     @Override
     public void setData(List<RepoInfo> data, boolean hasMore) {
-        adapter.setData(data);
+        adapter.setData(data,hasMore);
     }
 
     @Override
     public void addPage(List<RepoInfo> page, boolean hasMore) {
-        adapter.addPage(page);
+        adapter.addPage(page,hasMore);
     }
 
     @Override
